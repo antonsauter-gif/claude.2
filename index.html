@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streamova – Dein Streaming-Berater für die Schweiz</title>
+  <meta name="description" content="Streamova hilft dir, die besten Streaming-Anbieter für deine Bedürfnisse in der Schweiz zu finden." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-logo">Stream<span>ova</span></div>
+    <ul class="nav-links">
+      <li><a href="#how">So funktioniert's</a></li>
+      <li><a href="#survey">Beratung starten</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#survey" class="nav-cta">Kostenlos testen</a>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🇨🇭 Für die Schweiz optimiert</div>
+      <h1 class="hero-title">
+        Dein perfektes<br><em>Streaming-Paket</em>
+      </h1>
+      <p class="hero-sub">
+        Kein Vergleich von Hand. Beantworte 4 Fragen – Streamova findet die besten Anbieter für dein Budget und deine Interessen.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="document.getElementById('survey').scrollIntoView({behavior:'smooth'})">
+          Jetzt herausfinden →
+        </button>
+        <button class="btn-secondary" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">
+          Wie es funktioniert
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">8+</div>
+          <div class="stat-label">Anbieter verglichen</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Fragen genügen</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">CHF</div>
+          <div class="stat-label">Schweizer Preise</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section id="how">
+    <div class="section-inner">
+      <div class="section-label">So funktioniert's</div>
+      <h2 class="section-title">In drei Schritten zur Empfehlung</h2>
+      <p class="section-sub">Kein Account nötig, keine E-Mail-Adresse – einfach Fragen beantworten und Empfehlung erhalten.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Fragen beantworten</h3>
+          <p>Budget, Inhalte, Vertrag und Haushalt – 4 einfache Fragen, keine technischen Kenntnisse nötig.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Live-Vorschau sehen</h3>
+          <p>Während du antwortest, aktualisiert sich die Empfehlung in Echtzeit auf der rechten Seite.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Paket vergleichen</h3>
+          <p>Die besten 1–3 Anbieter werden mit Preis, Inhalten und Begründung übersichtlich dargestellt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SURVEY ── -->
+  <section id="survey">
+    <div class="section-inner">
+      <div class="section-label">Persönliche Beratung</div>
+      <h2 class="section-title">Welche Streaming-Lösung passt zu dir?</h2>
+      <p class="section-sub">Beantworte 4 Fragen – die Empfehlung erscheint live auf der rechten Seite.</p>
+
+      <div class="survey-wrap">
+        <!-- LEFT: Questions -->
+        <div class="survey-panel">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+          </div>
+          <div class="survey-step-counter" id="step-counter">Schritt 1 von 4</div>
+
+          <!-- Step 1: Budget -->
+          <div class="survey-step active" id="step-1">
+            <h3>Was ist dein monatliches Budget?</h3>
+            <p>Alle Preise in Schweizer Franken (CHF)</p>
+            <div class="options">
+              <button class="option-btn" onclick="selectOption(this,'budget','unter20')">
+                Bis CHF 20 / Monat <span class="check"></span>
+              </button>
+              <button class="option-btn" onclick="selectOption(this,'budget','unter40')">
+                Bis CHF 40 / Monat <span class="check"></span>
+              </button>
+              <button class="option-btn" onclick="selectOption(this,'budget','egal')">
+                Kein Limit – Qualität zählt <span class="check"></span>
+              </button>
+            </div>
+            <div class="survey-nav">
+              <button class="btn-secondary" disabled style="opacity:0.3">← Zurück</button>
+              <button class="btn-primary" onclick="nextStep()">Weiter →</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Content -->
+          <div class="survey-step" id="step-2">
+            <h3>Was möchtest du hauptsächlich schauen?</h3>
+            <p>Mehrere Antworten möglich</p>
+            <div class="options">
+              <button class="option-btn" onclick="toggleOption(this,'content','series')">
+                📺 Serien & TV-Shows <span class="check"></span>
+              </button>
+              <button class="option-btn" onclick="toggleOption(this,'content','movies')">
+                🎬 Filme <span class="check"></span>
+              </button>
+              <button class="option-btn" onclick="toggleOption(this,'content','sports')">
+                ⚽ Sport (Bundesliga, CL, F1…) <span class="check"></span>
+              </button>
+              <button class="option-btn" onclick="toggleOption(this,'content','live')">
+                📡 Live-TV / Schweizer Sender <span class="check"></span>
+              </button>
+              <button class="option-btn" onclick="toggleOption(this,'content','kids')">
+                🧒 Kinderinhalte <span class="check"></span>
+              </button>
+            </div>
+            <div class="survey-nav">
+              <button class="btn-secondary" onclick="prevStep()">← Zurück</button>
+              <button class="btn-primary" onclick="nextStep()">Weiter →</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Contract -->
+          <div class="survey-step" id="step-3">
+            <h3>Welche Vertragslaufzeit ist für dich in Ordnung?</h3>
+            <p>Monatsabo = flexibel, Jahresabo = günstiger</p>
+            <div class="options">
+              <button class="option-btn" onclick="selectOption(this,'contract','flex')">
+                Flexibel – monatlich kündbar <span class="check"></span>
+              </button>
+              <button class="option-btn" onclick="selectOption(this,'contract','annual')">
+                Jahresabo – auch in Ordnung <span class="check"></span>
+              </button>
+            </div>
+            <div class="survey-nav">
+              <button class="btn-secondary" onclick="prevStep()">← Zurück</button>
+              <button class="btn-primary" onclick="nextStep()">Weiter →</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Household -->
+          <div class="survey-step" id="step-4">
+            <h3>Wie gross ist dein Haushalt?</h3>
+            <p>Beeinflusst die Anzahl gleichzeitiger Streams</p>
+            <div class="options">
+              <button class="option-btn" onclick="selectOption(this,'household','solo')">
+                Ich alleine <span class="check"></span>
+              </button>
+              <button class="option-btn" onclick="selectOption(this,'household','couple')">
+                Zu zweit <span class="check"></span>
+              </button>
+              <button class="option-btn" onclick="selectOption(this,'household','family')">
+                Familie (3+ Personen) <span class="check"></span>
+              </button>
+            </div>
+            <div class="survey-nav">
+              <button class="btn-secondary" onclick="prevStep()">← Zurück</button>
+              <button class="btn-primary" onclick="nextStep()">Empfehlung anzeigen ✓</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Live Preview -->
+        <div class="preview-panel">
+          <h3>Live-Vorschau</h3>
+          <div class="preview-items" id="preview-items">
+            <p class="preview-empty">Beantworte die Fragen links,<br>um eine Vorschau zu sehen.</p>
+          </div>
+          <div class="preview-total">
+            <span class="preview-total-label">Geschätzte Kosten</span>
+            <span class="preview-total-price" id="preview-total-price">–</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESULTS ── -->
+  <section id="results">
+    <div class="section-inner">
+      <div class="section-label">Deine Empfehlung</div>
+      <h2 class="section-title">Das passt am besten zu dir</h2>
+      <div class="result-cards" id="result-cards"></div>
+      <div class="results-summary">
+        <div>
+          <div class="summary-label">Monatliche Gesamtkosten</div>
+          <div class="summary-total" id="results-total">–</div>
+        </div>
+        <button class="btn-restart" onclick="restartSurvey()">↺ Neue Analyse starten</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section id="faq">
+    <div class="section-inner">
+      <div class="section-label">Häufige Fragen</div>
+      <h2 class="section-title">FAQ</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">Ist Streamova kostenlos?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Ja, Streamova ist vollständig kostenlos und erfordert keine Registrierung. Es handelt sich um ein unabhängiges Vergleichstool ohne versteckte Kosten.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Sind die Preise aktuell?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Wir bemühen uns, die Preise regelmässig zu aktualisieren. Da sich Streaming-Preise ändern können, empfehlen wir, die genauen Konditionen direkt beim Anbieter zu prüfen.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Welche Anbieter werden verglichen?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Aktuell vergleichen wir Netflix, Disney+, Prime Video, Apple TV+, Max (HBO), Paramount+, Zattoo und Sky Sport – alles Anbieter mit Verfügbarkeit in der Schweiz.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Kann ich mehrere Streaming-Dienste kombinieren?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Ja, Streamova empfiehlt dir je nach Bedarf 1–3 Anbieter, die sich sinnvoll ergänzen, ohne Inhalte zu doppeln. Die Gesamtkosten werden direkt angezeigt.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Was ist, wenn ich mit dem Ergebnis nicht zufrieden bin?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Klicke einfach auf "Neue Analyse starten" und passe deine Antworten an. Die Empfehlung ändert sich in Echtzeit entsprechend deinen Eingaben.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Stream<span>ova</span></div>
+      <div class="footer-links">
+        <a href="#">Datenschutz</a>
+        <a href="#">Impressum</a>
+        <a href="#">Kontakt</a>
+      </div>
+      <div class="footer-copy">© 2025 Streamova · Schweiz · Beta-Version</div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
